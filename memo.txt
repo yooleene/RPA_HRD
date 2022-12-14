@@ -6,3 +6,10 @@ pip install jupyter --trusted-host pypi.org --trusted-host files.pythonhosted.or
 
 3.패키지 설치
 pip install pyautogui clipboard datetime pywinauto selenium opencv-python pillow openpyxl pandas lxml xlrd bs4 requests html5lib --trusted-host pypi.org --trusted-host files.pythonhosted.org
+
+4.윈도우 핸들링 오류 보완
+import pywinauto
+win = pyautogui.getWindowsWithTitle("제목 없음")[0] #특정 제목이 있는 창의 정보를 첫번째 리스트에 가져오기
+pywinauto.application.Application().connect(handle=win._hWnd).top_window().set_focus()
+pyautogui.sleep(1)
+win.activate()
